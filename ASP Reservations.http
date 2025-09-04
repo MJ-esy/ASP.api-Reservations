@@ -1,0 +1,6 @@
+@ASP_Reservations_HostAddress = http://localhost:5119
+
+GET {{ASP_Reservations_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
