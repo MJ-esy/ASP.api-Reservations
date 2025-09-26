@@ -7,6 +7,7 @@ namespace ASP_Reservations.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookingsController : ControllerBase
     {
         private readonly IBookingServices _bookingServices;
@@ -15,7 +16,6 @@ namespace ASP_Reservations.Controllers
             _bookingServices = bookingServices;
         }
 
-        [Authorize]
         [HttpGet("allBookings")]
         public async Task<ActionResult> GetAllBookings()
         {
@@ -23,7 +23,6 @@ namespace ASP_Reservations.Controllers
             return Ok(bookings);
         }
 
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetBookingById(int id)
         {
@@ -35,7 +34,6 @@ namespace ASP_Reservations.Controllers
             return Ok(booking);
         }
 
-        [Authorize]
         [HttpGet("userBookings/{userId}")]
         public async Task<ActionResult> GetUserByUserId(int id)
         {
@@ -43,7 +41,6 @@ namespace ASP_Reservations.Controllers
             return Ok(bookings);
         }
 
-        [Authorize]
         [HttpGet("bookingsByDate")]
         public async Task<ActionResult> GetBookingsByDate(DateTime date)
         {
@@ -51,7 +48,6 @@ namespace ASP_Reservations.Controllers
             return Ok(bookings);
         }
 
-        [Authorize]
         [HttpGet("bookingsToday")]
         public async Task<ActionResult> GetBookingsToday()
         {
@@ -59,7 +55,7 @@ namespace ASP_Reservations.Controllers
             return Ok(bookings);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPost("createBooking")]
         public async Task<ActionResult> CreateBooking(CreateBookingDTO createbookingDto)
         {
@@ -67,7 +63,7 @@ namespace ASP_Reservations.Controllers
             return Ok(createdBooking);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPut("updateBooking/{id}")]
         public async Task<ActionResult> UpdateBooking(int id, UpdateBookingDTO updatebookingDto)
         {
@@ -75,7 +71,7 @@ namespace ASP_Reservations.Controllers
             return Ok(updatedBooking);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpDelete("deleteBooking/{id}")]
         public async Task<ActionResult> DeleteBooking(int id)
         {

@@ -10,6 +10,7 @@ namespace ASP_Reservations.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -43,7 +44,6 @@ namespace ASP_Reservations.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginAdminDTO loginAdmin)
         {
