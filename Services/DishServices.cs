@@ -66,7 +66,9 @@ namespace ASP_Reservations.Services
                 Description = d.Description,
                 IsPopular = d.IsPopular,
                 Category = d.Category.ToString(),
-                Allergen = d.Allergen.ToString(),
+                Allergen = string.Join(", ", Enum.GetValues(typeof(Allergy))
+            .Cast<Allergy>()
+            .Where(a => d.Allergen.HasFlag(a) && a != Allergy.None)),
                 ImageUrl = d.ImageUrl
             }).ToList();
 
@@ -86,7 +88,9 @@ namespace ASP_Reservations.Services
                 Description = dish.Description,
                 IsPopular = dish.IsPopular,
                 Category = dish.Category.ToString(),
-                Allergen = dish.Allergen.ToString(),
+                Allergen = string.Join(", ", Enum.GetValues(typeof(Allergy))
+            .Cast<Allergy>()
+            .Where(a => dish.Allergen.HasFlag(a) && a != Allergy.None)),
                 ImageUrl = dish.ImageUrl
             };
         }
