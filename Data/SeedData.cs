@@ -34,11 +34,12 @@ namespace ASP_Reservations.Data
                 {
                     DishId = 1,
                     DishName = "Skagen Sandwich",
-                    Price = 175, 
+                    Price = 175,
                     Description = "sourdough bread, pickled cucumber trout roe(E,G,L)",
                     IsPopular = true,
                     Category = DishCategories.Starters,
-                    Allergen = Allergy.Gluten | Allergy.Eggs | Allergy.Lactose
+                    Allergen = Allergy.Gluten | Allergy.Eggs | Allergy.Lactose,
+                    ImageUrl = "https://shared.cdn.smp.schibsted.com/v2/images/4c0c27ff-0d8d-4616-91a4-5ade5020e187?fit=crop&h=1426&w=1900&s=c946556f4ea073d8d4bcbd9f68761e90c8be64f0"
                 },
                 new Dish
                 {
@@ -58,7 +59,8 @@ namespace ASP_Reservations.Data
                     Description = "parmesan grilled sour dough (G,L)",
                     IsPopular = true,
                     Category = DishCategories.Starters,
-                    Allergen = Allergy.Gluten | Allergy.Lactose
+                    Allergen = Allergy.Gluten | Allergy.Lactose,
+                    ImageUrl = "https://i.ytimg.com/vi/-cK2rs86oSQ/hqdefault.jpg"
                 },
                 new Dish
                 {
@@ -107,7 +109,8 @@ namespace ASP_Reservations.Data
                       Description = "Sandefjord sauce, trout roe, Chantarelles, boiled potatoes (L)",
                       IsPopular = true,
                       Category = DishCategories.Mains,
-                      Allergen = Allergy.Lactose
+                      Allergen = Allergy.Lactose,
+                      ImageUrl = "https://www.livinglou.com/wp-content/uploads/2010/08/oven-baked-trout-fillets.jpg"
                   },
                   new Dish
                   {
@@ -127,7 +130,8 @@ namespace ASP_Reservations.Data
                       Description = "green peppar sauce, French fries, parmesan (L)",
                       IsPopular = true,
                       Category = DishCategories.Mains,
-                      Allergen = Allergy.Lactose
+                      Allergen = Allergy.Lactose,
+                      ImageUrl = "https://embed.widencdn.net/img/beef/mmnbci53nd/1540x1284px/t-bone-steaks-&-grilled-vegetables-vertical.eps?keep=c"
                   },
                   new Dish
                   {
@@ -137,7 +141,8 @@ namespace ASP_Reservations.Data
                       Description = "vanilla ice cream (E,L)",
                       IsPopular = true,
                       Category = DishCategories.Dessert,
-                      Allergen = Allergy.Lactose | Allergy.Gluten | Allergy.Eggs
+                      Allergen = Allergy.Lactose | Allergy.Gluten | Allergy.Eggs,
+                      ImageUrl = "https://onedishkitchen.com/wp-content/uploads/2018/10/apple-pie-one-dish-kitchen-1-1.jpg"
                   },
                   new Dish
                   {
