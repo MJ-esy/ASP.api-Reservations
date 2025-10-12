@@ -44,6 +44,7 @@ namespace ASP_Reservations.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginAdminDTO loginAdmin)
         {
