@@ -88,7 +88,7 @@ namespace ASP_Reservations.Services
       return new CreateBookingDTO
       {
         UserIdFk = createdBooking.UserIdFk,
-        User = createdBooking.User.Name,
+        Name = createdBooking.User.Name,
         TableIdFk = createdBooking.TableIdFk,
         StartDateTime = createdBooking.StartDateTime,
         GuestNum = createdBooking.GuestNum,
@@ -119,7 +119,7 @@ namespace ASP_Reservations.Services
       var updatedBooking = await _bookingRepo.UpdateBookingAsync(existingBooking);
       return new UpdateBookingDTO
       {
-        BookingId = updatedBooking.BookingId,
+        BookingId = id,
         StartDateTime = updatedBooking.StartDateTime,
         GuestNum = updatedBooking.GuestNum,
         Status = updatedBooking.Status

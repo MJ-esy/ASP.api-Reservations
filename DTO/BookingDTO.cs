@@ -27,7 +27,7 @@ namespace ASP_Reservations.DTO
   {
     [Required]
     public int UserIdFk { get; set; }
-    public string User { get; set; }
+    public string Name { get; set; }
     [Required]
     public int TableIdFk { get; set; }
     [Required]
