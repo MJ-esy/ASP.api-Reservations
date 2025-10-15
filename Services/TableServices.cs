@@ -100,7 +100,7 @@ namespace ASP_Reservations.Services
 
                 if (hasActiveBooking)
                 {
-                    throw new Exception("Cannot set table to unavailable. There are active bookings for this table.");
+                    throw new Exception("Cannot set table to available. There are active bookings for this table.");
                 }
             }
             return await _tableRepo.SetTableAvailabilityAsync(tableId, isAvailable);
@@ -114,7 +114,7 @@ namespace ASP_Reservations.Services
                 throw new Exception("Table not found.");
             }
 
-            table.TableId = tableDto.TableId;
+            table.TableId = id;
             table.TableNum = tableDto.TableNum;
             table.Capacity = tableDto.Capacity;
             table.IsAvailable = tableDto.IsAvailable;
