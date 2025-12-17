@@ -1,5 +1,4 @@
 ﻿using ASP_Reservations.DTO;
-using ASP_Reservations.Models;
 
 namespace ASP_Reservations.Services.IServices
 {
@@ -11,5 +10,6 @@ namespace ASP_Reservations.Services.IServices
         Task<bool> UpdateUserAsync(int id, UpdateUserDTO userDTO); //To return true/false
         Task<bool> DeleteUserAsync(int id); //To return true/false
         Task<UserDTO> GetUserAndBookingCountAsync(int id); //To return UserDTO with booking count
+        Task<UserResponse> CreateOrGetUserAsync(UserDTO user);
     }
 }

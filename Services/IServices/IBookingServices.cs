@@ -6,7 +6,7 @@ namespace ASP_Reservations.Services.IServices
     {
         Task<List<BookingSummaryDTO>> GetAllBookingsAsync();
         Task<BookingDTO> GetBookingbyId(int id);
-        Task<CreateBookingDTO> CreateBookingAsync(CreateBookingDTO createbookingDto);
+        Task<BookingSummaryDTO> CreateBookingAsync(CreateBookingDTO createbookingDto);
         Task<UpdateBookingDTO> UpdateBookingAsync(int id, UpdateBookingDTO updatebookingDto);
         Task<bool> DeleteBookingAsync(int id);
         Task<bool> CancelBookingAsync(int id);

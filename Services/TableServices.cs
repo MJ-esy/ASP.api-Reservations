@@ -122,5 +122,38 @@ namespace ASP_Reservations.Services
             await _tableRepo.UpdateTableAsync(table);
             return tableDto;
         }
+
+        public async Task<IEnumerable<TableSummaryDTO>> FindAvailableTablesAsync(int guestNum, DateTime start)
+        {
+            // 1. Tables that fit capacity
+            var tables = await _tableRepo.GetTablesByCapacityAsync(guestNum);
+
+            // 2. Active bookings in time range
+            var bookings = await _bookingRepo.GetBookingsInTimeRangeAsync(
+                start,
+                start.AddHours(2)
+            );
+
+            // 3. Filter out booked tables
+            var availableTables = tables
+                .Where(t =>
+                    t.IsAvailable &&
+                    !bookings.Any(b =>
+                        b.TableIdFk == t.TableId &&
+                        b.Status.ToString() == "Confirmed"
+                    )
+                )
+                .Select(t => new TableSummaryDTO
+                {
+                    TableId = t.TableId,
+                    TableNum = t.TableNum,
+                    Capacity = t.Capacity,
+                    IsAvailable = true,
+                    Status = "Available"
+                })
+                .ToList();
+
+            return availableTables;
+        }
     }
 }

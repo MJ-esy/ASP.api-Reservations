@@ -82,5 +82,17 @@ namespace ASP_Reservations.Controllers
             return BadRequest(new { message = "Failed to delete user." });
         }
 
+        [HttpPost("create-or-get")]
+        public async Task<IActionResult> CreateOrGetUser(UserDTO user)
+        {
+            var result = await _userServices.CreateOrGetUserAsync(user);
+            if (result == null)
+            {
+                return BadRequest(new { message = "Failed to create or get user." });
+            }
+
+            return Ok(result);
+        }
+
     }
 }

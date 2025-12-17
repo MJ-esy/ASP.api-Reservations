@@ -9,5 +9,6 @@ namespace ASP_Reservations.Repositories.IRepositories
         Task<int> CreateUserAsync(User user); //To return UserId of created user
         Task<User> UpdateUserAsync(User user); //To return updated user object
         Task<int> DeleteUserAsync(int id); //To return number of rows affected
+        Task<User> FindByPhone(string phone);
     }
 }

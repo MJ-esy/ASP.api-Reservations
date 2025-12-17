@@ -1,6 +1,7 @@
 ﻿using ASP_Reservations.Data;
 using ASP_Reservations.Models;
 using ASP_Reservations.Repositories.IRepositories;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP_Reservations.Repositories
@@ -46,6 +47,12 @@ namespace ASP_Reservations.Repositories
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
             return user; // Return the updated user object
+        }
+
+        public async Task<User> FindByPhone (string phone)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Phone == phone);
+            return user;
         }
     }
 }

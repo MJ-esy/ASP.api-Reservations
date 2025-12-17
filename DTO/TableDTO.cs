@@ -36,4 +36,12 @@ namespace ASP_Reservations.DTO
         [Required]
         public bool IsAvailable { get; set; }
     }
+
+    public class FindAvailableTableDTO
+    {
+        [Required]
+        public int GuestNum { get; set; }
+        [Required]
+        public DateTime StartDateTime { get; set; }
+    }
 }

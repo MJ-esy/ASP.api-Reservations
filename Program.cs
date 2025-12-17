@@ -21,6 +21,17 @@ namespace ASP_Reservations
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173", "https://localhost:7019")
+
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddControllers();
             builder.Services.AddScoped<IUserRepo, UserRepo>();
             builder.Services.AddScoped<IUserServices, UserServices>();
@@ -31,7 +42,9 @@ namespace ASP_Reservations
             builder.Services.AddScoped<IDishRepo, DishRepo>();
             builder.Services.AddScoped<IDishServices, DishServices>();
             builder.Services.AddScoped<TokenServices>();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
+
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen(c =>
@@ -93,6 +106,9 @@ namespace ASP_Reservations
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowFrontend");
+
             app.UseAuthentication();
             app.UseAuthorization();
 

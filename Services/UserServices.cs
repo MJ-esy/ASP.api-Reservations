@@ -119,5 +119,35 @@ namespace ASP_Reservations.Services
             return false;
 
         }
+
+        public async Task<UserResponse> CreateOrGetUserAsync(UserDTO user)
+        {
+            var existingUser = await _userRepo.FindByPhone(user.Phone);
+            if (existingUser != null)
+            {
+                return new UserResponse
+                {
+                    UserId = existingUser.UserId,
+                    Name = existingUser.Name,
+                    Email = existingUser.Email,
+                    Phone = existingUser.Phone
+                };
+            }
+
+            var newUser = new User
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Phone = user.Phone
+            };
+            await _userRepo.CreateUserAsync(newUser);
+            return new UserResponse
+            {
+                UserId = newUser.UserId,
+                Name = newUser.Name,
+                Email = newUser.Email,
+                Phone = newUser.Phone
+            };
+        }
     }
 }

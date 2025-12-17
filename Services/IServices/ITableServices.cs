@@ -11,6 +11,7 @@ namespace ASP_Reservations.Services.IServices
         Task<string> GetTableStatusAsync(int tableNum);
         Task<IEnumerable<TableDTO>> GetTablesByCapacityAsync(int capacity);
         Task<bool> SetTableAvailabilityAsync(int tableId, bool isAvailable);
+        Task<IEnumerable<TableSummaryDTO>> FindAvailableTablesAsync(int guestNum, DateTime start);
 
     }
 }
